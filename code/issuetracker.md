@@ -6,3 +6,6 @@ But leave comments in .java files
  
 #### Bug ID(class name + method id -- e.g. ``` wspaper-1``` ```wsreview-2``` ```wsrsystem-3```) Date(dd/mm/yyyy) Author(first name) 
 	type you bug fix here
+	
+#### wspaper-1 30/03/2017 Junsong
+	Added error messages for incorrect input.
