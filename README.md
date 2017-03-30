@@ -9,8 +9,11 @@ Please use this format when you commit changes
 
 ```git commit -m "Your Name -- Changes you made"```
 
+
+## Create a markdwon doc for each class and write down every change you make and bug fix details
+
 ### Time Line
-	- 31/03 -- Paired Coding, finish part 1 of stage 1
+	- 31/03 -- Paired Coding
 	- 01/04 -- check stage 1 + bug fix
 				Stage 1: tests for WorkshopPaper and WorkshopReview.
 	- 02/04 -- stage 1 finish + bug fix
