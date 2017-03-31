@@ -56,13 +56,13 @@ public class WorkshopPaper {
 			AvgScore += PReviews[1].getRScore();
 			numReviews++;
 		}
-		AvgScore = AvgScore/numReviews;
+		AvgScore = AvgScore/numReviews; //what if numReviews 0
 		return AvgScore;
 	}
 	
 	public String toString(){
 		String myoutput = "";
-		myoutput = "Average Score = " + ROutputs[Math.round(getAverageScore())] + "\n\n";
+		myoutput = "Average Score = " + ROutputs[Math.round(getAverageScore())] + "\n\n"; //ROutputs index[0~4] Math.round.out[1~5]
 		myoutput += "Review 1:\n" + PReviews[0].toString() + "\n";
 		myoutput += "Review 2:\n" + PReviews[1].toString() + "\n";
 		myoutput += "Review 3:\n" + PReviews[2].toString() + "\n";
