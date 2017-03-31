@@ -22,3 +22,10 @@ Please use this format when you commit changes
 	- 05/04 -- stage 2 finish
 	- 06/04 -- Due
 	
+### Test Coverage
+	- base case
+	- boundary values
+### make a test that will DEFINITELY FAIL if not passed (Should not pass if no asserts are triggered)
+
+### imitate user input -- look at tutorial q4
+
