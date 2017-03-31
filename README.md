@@ -29,3 +29,4 @@ Please use this format when you commit changes
 
 ### imitate user input -- look at tutorial q4
 
+JUnit Asserts: http://junit.org/junit4/javadoc/latest/org/junit/Assert.html
