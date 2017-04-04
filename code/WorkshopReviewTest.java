@@ -10,7 +10,7 @@ public class WorkshopReviewTest {
 	
 	WorkshopReview review = new WorkshopReview();
 	int int1;
-	String str1 = "No Review", str2;
+	String str1 = "No Review", str2 = "great";
 	
 	
     
@@ -53,26 +53,26 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
 	public void test_GetSocore(){
-	        int Returnedscore = WorkshopReview.getRScore("testint");
+	        int Returnedscore = review.getRScore();
 	        assertNotNull(Returnedscore);
 	}
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//--unfinished
 	@Test
-	public void test_SetScore(){
-		int score = 0; 
+	public void test_SetScore(){ 
+		int score = 4;
 		try {
-			score = Treview.setRScore(rScore); 
+			review.setRScore(score); 
 			} 
 		catch(Exception e){
-			if (score > Integer.MIN_VALUE){
-				return;
+			if (score > 5 || score < 1){
+				
 				}
 			else
 				fail("error");
 			}
-			assertEquals(50, score);
+			assertEquals(score, review.getRScore());
 
 			
 	}
@@ -80,18 +80,16 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
 	public void test_GetReview(){
-	        String Returnedreview = getRReview("testString");
-	        assertNotNull(Returnedreview);
+			String Returnreview = review.getRReview();
+	        assertNotNull(Returnreview);
 	}
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//--unfinished
 	@Test
-	public void test_SetReview(){
-		String review = great; 
-		String input2;
+	public void test_SetReview(){ 
 		try {
-			review = Treview.setRReview(input2); 
+			review.setRReview(str2); 
 			} 
 		catch(Exception e){
 			if(e.getClass() == IllegalArgumentException.class) {
@@ -99,10 +97,8 @@ public class WorkshopReviewTest {
     		}
 			else
 				fail("error");
-			
-			
 		}
-			assertEquals(good, review);
+			assertEquals(str2, review.getRReview());
 			
 
 	}
@@ -110,7 +106,7 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
 	public void test_toString(){
-		String toString = Treview.toString();
-	    assertTrue(toString.contains("Score = " + RScore + "\n Review: " + RReview + "\n"));
+		String toString = review.toString();
+	    assertTrue(toString.contains("Score = " + review.getRScore() + "\n Review: " + review.getRReview() + "\n"));
 	}
 }
