@@ -1,8 +1,8 @@
 
 public class WorkshopPaper {
-	private String PTitle;
-	private WorkshopReview[] PReviews;
-	private static String[] ROutputs = new String[]{"*","**","***","****","*****"};
+	public String PTitle;
+	public WorkshopReview[] PReviews;
+	public static String[] ROutputs = new String[]{"*","**","***","****","*****"};
 
 	public WorkshopPaper() {
 		PTitle = "New Paper";
@@ -53,16 +53,16 @@ public class WorkshopPaper {
 			numReviews++;
 		}
 		if (PReviews[2] != null){
-			AvgScore += PReviews[1].getRScore();
+			AvgScore += PReviews[2].getRScore();
 			numReviews++;
 		}
-		AvgScore = AvgScore/numReviews; //what if numReviews 0
+		AvgScore = AvgScore/numReviews; //what if numReviews = 0 - 31/3/17
 		return AvgScore;
 	}
 	
 	public String toString(){
 		String myoutput = "";
-		myoutput = "Average Score = " + ROutputs[Math.round(getAverageScore())] + "\n\n"; //ROutputs index[0~4] Math.round.out[1~5]
+		myoutput = "Average Score = " + ROutputs[Math.round(getAverageScore())] + "\n\n"; //ROutputs index[0~4] Math.round.out[1~5] - 31/3/17
 		myoutput += "Review 1:\n" + PReviews[0].toString() + "\n";
 		myoutput += "Review 2:\n" + PReviews[1].toString() + "\n";
 		myoutput += "Review 3:\n" + PReviews[2].toString() + "\n";
