@@ -10,7 +10,7 @@ public class WorkshopReviewTest {
 	
 	WorkshopReview review = new WorkshopReview();
 	int int1;
-	String str1 = "No Review", str2 = "great";
+	String str1 = "No Review", str2 = "great", str3= "word";
 	
 	
     
@@ -29,27 +29,22 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//--unfinished
 	@Test
-	public void test_Main() throws Exception{
-		review.WorkShopReview(4, "Fantastic");
-		String rReview = review.getRReview();
-		int rScore = review.getRScore();
-		assertEquals(4, rScore);
-		assertEquals(rReview, "Fantastic");
-		
-		try{
-			review.WorkShopReview(6, "Fanstastic");
-		}catch (Exception e){
-			System.err.println("scoreRangeException: " + e.getMessage());
-		}//test score range
-		
+	public void test_Main_isScore_isReview(){
+		review.WorkShopReview(4, "great");
+		assertNotNull(review.getRScore());
+		assertNotNull(review.getRReview());
+	}
+
+	@Test
+	public void test_Main_ReviewErrorThrown(){
 		try{
 			review.WorkShopReview(4, "word");
 		}catch (Exception revExcep){
-			System.err.println("ReviewRangeException: " + revExcep.getMessage());
+			return;
 		}//test minimum amount of text
+		//minimum is 5
+		fail();
 	}
-	
-
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
 	public void test_GetSocore(){
@@ -60,22 +55,28 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//--unfinished
 	@Test
-	public void test_SetScore(){ 
+	public void test_SetScore_OutOfRange(){ 
+		int score = 6;
+		try {
+			review.setRScore(score); 
+			} 
+		catch(Exception e){
+			return;
+			}
+		fail();
+	}
+
+	@Test
+	public void test_SetScore_InRange(){ 
 		int score = 4;
 		try {
 			review.setRScore(score); 
 			} 
 		catch(Exception e){
-			if (score > 5 || score < 1){
-				
-				}
-			else
-				fail("error");
+			fail();
 			}
-			assertEquals(score, review.getRScore());
-
-			
 	}
+	
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
@@ -89,24 +90,18 @@ public class WorkshopReviewTest {
 	@Test
 	public void test_SetReview(){ 
 		try {
-			review.setRReview(str2); 
+			review.setRReview(str3); 
 			} 
 		catch(Exception e){
-			if(e.getClass() == IllegalArgumentException.class) {
-				return;
-    		}
-			else
-				fail("error");
+			return;
 		}
-			assertEquals(str2, review.getRReview());
-			
-
+		fail();
 	}
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	@Test
 	public void test_toString(){
 		String toString = review.toString();
-	    assertTrue(toString.contains("Score = " + review.getRScore() + "\n Review: " + review.getRReview() + "\n"));
+	    assertTrue(toString.contains("Score = " + WorkshopReview.ROutputs[review.getRScore()] + "\n Review: " + review.getRReview() + "\n"));
 	}
 }
