@@ -3,30 +3,50 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import org.junit.Before;
-//import org.junit.After;
+import org.junit.After;
 
 public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	WorkshopReview Treview = new WorkshopReview();
-	int input1;
-    String input2;
+	
+	WorkshopReview review = new WorkshopReview();
+	int int1;
+	String str1 = "No Review", str2;
+	
+	
     
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+    //Junsong -- finished -- default score and review were tested
 	@Test
 	public void test_Default() {
-		WorkshopReview reviewobject = new WorkshopReview();
-		reviewobject.WorkshopReview();
-		assertEquals(Treview, reviewobject.WorkshopReview());
-		//fail("Not yet implemented");
+		review.WorkShopReview();
+		int dScore = review.getRScore();
+		assertEquals(dScore, 0);
+		
+		String dReview = review.getRReview();
+		assertEquals(dReview, str1);
 	}
 
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//--unfinished
 	@Test
-	public void test_Main(){
-		WorkshopReview View = Treview.WorkshopReview(input1, input2);
-		assertEquals(Treview, reviewobject.WorkshopReview());
-		// test: contain a reasonable minimum amount of text.
+	public void test_Main() throws Exception{
+		review.WorkShopReview(4, "Fantastic");
+		String rReview = review.getRReview();
+		int rScore = review.getRScore();
+		assertEquals(4, rScore);
+		assertEquals(rReview, "Fantastic");
+		
+		try{
+			review.WorkShopReview(6, "Fanstastic");
+		}catch (Exception e){
+			System.err.println("scoreRangeException: " + e.getMessage());
+		}//test score range
+		
+		try{
+			review.WorkShopReview(4, "word");
+		}catch (Exception revExcep){
+			System.err.println("ReviewRangeException: " + revExcep.getMessage());
+		}//test minimum amount of text
 	}
 	
 
