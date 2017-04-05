@@ -19,7 +19,7 @@ public class WorkshopReviewSystemTest {
 	}
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
+	//Passed - 5/4/17 15:53
 	@Test
 	public void testPrintPaperOverviewWithPapers() {
 		WorkshopReviewSystem.AllPapers = new ArrayList<WorkshopPaper>();
@@ -46,9 +46,20 @@ public class WorkshopReviewSystemTest {
 		assertEquals(expectedOut, outContent.toString());
 	}
 	
+	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
+	//Failed - 5/4/17 15:53
 	@Test
 	public void testPrintPaperOverviewNoPaper() {
-		fail("Not yet implemented");
+		WorkshopReviewSystem.AllPapers = new ArrayList<WorkshopPaper>();
+		try{
+			WorkshopReviewSystem.PrintPaperOverview();
+		} catch (Exception e){
+			if (e.getClass()==Exception.class){
+				assertEquals("No papers were found.\r\n", outContent.toString());
+				return;
+			}
+		}
+		fail();
 	}
 	
 	@After
