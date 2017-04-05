@@ -3,7 +3,7 @@ import java.util.*;
 
 public class WorkshopReviewSystem {
 
-	private static ArrayList<WorkshopPaper> AllPapers;
+	public static ArrayList<WorkshopPaper> AllPapers;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -60,7 +60,7 @@ public class WorkshopReviewSystem {
 		
 	}
 	
-	private static void AddPaper(Scanner in) {
+	public static void AddPaper(Scanner in) {
 		System.out.println("What is the title of the paper?");
 		in.nextLine(); // to remove read-in bug
 		String title = in.nextLine();
@@ -68,7 +68,7 @@ public class WorkshopReviewSystem {
 		System.out.println("[Paper added]");
 	}
 	
-	private static void AddReview(Scanner in) {
+	public static void AddReview(Scanner in) {
 		System.out.println("Which paper do you want to add a review to?");
 		int x = in.nextInt();
 		System.out.println("What score do you give it?");
@@ -81,14 +81,14 @@ public class WorkshopReviewSystem {
 		System.out.println("[Review added to Paper " + x + "]");
 	}
 	
-	private static void PrintPaperOverview(){
+	public static void PrintPaperOverview(){
 		for (int x = 0; x < AllPapers.size(); x++) {
 			WorkshopPaper wp = AllPapers.get(x);
 			System.out.println((x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore());
 		}
 	}
 	
-	private static void PrintAPaper(int paperID) {
+	public static void PrintAPaper(int paperID) {
 		WorkshopPaper wp = AllPapers.get(paperID);
 		System.out.print("\nPaper " + (paperID+1) + " - " + wp.toString());
 	}

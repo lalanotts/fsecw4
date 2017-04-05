@@ -4,24 +4,14 @@ public class WorkshopReview {
 	private String RReview;
 	private static String[] ROutputs = new String[]{"*","**","***","****","*****"};
 	
-	public void WorkShopReview() {
+	public WorkshopReview() {
 		RScore = 0;
 		RReview = "No Review";
 	}
 	
-	public void WorkShopReview(int rScore, String rReview) throws Exception {
+	public WorkshopReview(int rScore, String rReview) {
 		RScore = rScore;
-		if (RScore > 5 && RScore < 1){
-			Exception e = new Exception("Score is bewteen 1 and 5");
-			throw e;
-		}
 		RReview = rReview;
-		
-		if (RReview.length() < 5){
-			Exception revExcep = new Exception("Minimum amount of text is 5");
-			throw revExcep;
-			
-		}
 	}
 	public int getRScore() {
 		return RScore;
