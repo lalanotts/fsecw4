@@ -17,7 +17,7 @@ import org.junit.Test;
 public class WorkshopReviewSystemTestPart1 {
 	
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	private ByteArrayInputStream inContent, testTitle, addPaper, addReview;
+	private ByteArrayInputStream inContent;
 	ArrayList<WorkshopPaper> testarr = new ArrayList<WorkshopPaper>();
 	
 	Scanner in = new Scanner(System.in);
@@ -28,27 +28,23 @@ public class WorkshopReviewSystemTestPart1 {
 	//Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
 	@Before 
 	public void setup(){
-		title = "water";
+		title = "\nwater";
 		score = 4;
-		}
+		System.setOut(new PrintStream (outContent));
+	}
 	
 	
   //Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
 	@Test
 	public void test_AddPaper() {    
-		WorkshopReviewSystem.AllPapers = new ArrayList<WorkshopPaper>();
+		WorkshopReviewSystem.AllPapers = testarr;
 		inContent = new ByteArrayInputStream(title.getBytes());
 		System.setIn(inContent);
-		
 		try{
 			WorkshopReviewSystem.AddPaper(in);
 		}catch (Exception e){
-			System.err.println(e.toString());
-			//fail();
+			fail();
 		}
-		assertEquals("What is the title of the paper?\r\n", outContent.toString());
-		System.setIn(inContent);
-		assertEquals("[Paper added]\r\n", outContent.toString());
 		
 	}
 
