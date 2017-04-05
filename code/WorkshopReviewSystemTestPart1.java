@@ -15,8 +15,10 @@ import org.omg.CORBA.portable.InputStream;
 
 public class WorkshopReviewSystemTestPart1 {
 	
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private ByteArrayInputStream inContent;
 	private static ArrayList<WorkshopPaper> testarr;
-	Scanner in = new Scanner(System.in);
+	Scanner in;// = new Scanner(System.in);
 	
 	String title, review;
 	int score;
@@ -27,38 +29,43 @@ public class WorkshopReviewSystemTestPart1 {
 	public void setup(){
 		title = "water";
 		score = 4;
-		x = in.nextInt();
+		System.setOut(new PrintStream(outContent));
 		}
 	
   //Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
 	@Test
 	public void test_AddPaper() {    
 		
+		inContent = new ByteArrayInputStream("water".getBytes());
+		
+		System.setIn(inContent);
 		try {
-			testarr.add(new WorkshopPaper(title));	//unfinished		
+			WorkshopReviewSystem.AddPaper(in);	//unfinished		
 		} 
         catch(Exception e) {
-			fail();
-		}   
+        	
+		} 
+		assertEquals("What is the title of the paper?", outContent.toString());
+		assertEquals("[Paper added]", outContent.toString());
 		
 	}
 
-	//Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
-	@Test
-	public void test_AddReview(){
-		WorkshopReview wr = new WorkshopReview();
-		WorkshopReviewSystem.wr(score,review)//unfinished
-		WorkshopPaper wp = AllPapers.get(x-1);
-		wp.addReview(wr);
-		
-		workshopreviewsystem.AddReview(in);//unfinished
-		java.io.InputStream stdin = System.in;
-		try
-		{
-			System.setIn(new WorkshopReviewSystem(WorkshopReview.wr()));//unfinished
-		}
-		catch(Exception e){
-			System.out.println("Comfirmation");
-		}
-	}
+//	//Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
+//	@Test
+//	public void test_AddReview(){
+//		WorkshopReview wr = new WorkshopReview();
+//		WorkshopReviewSystem.wr(score,review)//unfinished
+//		WorkshopPaper wp = AllPapers.get(x-1);
+//		wp.addReview(wr);
+//		
+//		workshopreviewsystem.AddReview(in);//unfinished
+//		java.io.InputStream stdin = System.in;
+//		try
+//		{
+//			System.setIn(new WorkshopReviewSystem(WorkshopReview.wr()));//unfinished
+//		}
+//		catch(Exception e){
+//			System.out.println("Comfirmation");
+//		}
+//	}
 }
