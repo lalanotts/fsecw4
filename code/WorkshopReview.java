@@ -2,7 +2,9 @@
 public class WorkshopReview {
 	private int RScore;
 	private String RReview;
-	private static String[] ROutputs = new String[]{"*","**","***","****","*****"};
+	public static String[] ROutputs = new String[]{"*","**","***","****","*****"};
+	//private static String[] ROutputs = new String[]{"*","**","***","****","*****"};
+	//temporarily changed to public for testing
 	
 	public WorkshopReview() {
 		RScore = 0;
@@ -30,7 +32,6 @@ public class WorkshopReview {
 	public String toString() {
 		return "Score = " + ROutputs[RScore] + "\n Review: " + RReview + "\n";
 	}
-	
 	
 	
 }

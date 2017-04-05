@@ -7,18 +7,27 @@ import org.junit.After;
 
 public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	
-	WorkshopReview review = new WorkshopReview();
+	WorkshopReview review;
 	int int1;
-	String str1 = "No Review", str2 = "great", str3= "word";
+	String str1, str2, str3;
+	
+	@Before
+	public void setupForwsReviewTest(){
+	review = new WorkshopReview();
+	
+	str1 = "No Review";
+	str2 = "great";
+	str3= "word";
+	}
 	
 	
-    
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
     //Junsong -- finished -- default score and review were tested
 	@Test
+	
+	
 	public void test_Default() {
-		review.WorkShopReview();
+		review = new WorkshopReview();
 		int dScore = review.getRScore();
 		assertEquals(dScore, 0);
 		
@@ -30,7 +39,7 @@ public class WorkshopReviewTest {
 	//--unfinished
 	@Test
 	public void test_Main_isScore_isReview(){
-		review.WorkShopReview(4, "great");
+		review = new WorkshopReview(4, "great");
 		assertNotNull(review.getRScore());
 		assertNotNull(review.getRReview());
 	}
@@ -38,7 +47,7 @@ public class WorkshopReviewTest {
 	@Test
 	public void test_Main_ReviewErrorThrown(){
 		try{
-			review.WorkShopReview(4, "word");
+			review = new WorkshopReview(4, "word");
 		}catch (Exception revExcep){
 			return;
 		}//test minimum amount of text
