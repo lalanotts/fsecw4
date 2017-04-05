@@ -41,10 +41,14 @@ public class WorkshopReviewSystemTestPart1 {
 		inContent = new ByteArrayInputStream(title.getBytes());
 		System.setIn(inContent);
 		try{
+			System.setIn(inContent);
 			WorkshopReviewSystem.AddPaper(in);
+			System.setIn(inContent);
 		}catch (Exception e){
 			fail();
 		}
+		assertEquals(WorkshopReviewSystem.AllPapers.get(0).PTitle, "a");
+		
 		
 	}
 
