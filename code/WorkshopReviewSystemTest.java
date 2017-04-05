@@ -47,7 +47,7 @@ public class WorkshopReviewSystemTest {
 	}
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
-	//Failed - 5/4/17 15:53
+	//Failed - No exception caught when no papers - 5/4/17 15:53 - BUG #
 	@Test
 	public void testPrintPaperOverviewNoPaper() {
 		WorkshopReviewSystem.AllPapers = new ArrayList<WorkshopPaper>();
