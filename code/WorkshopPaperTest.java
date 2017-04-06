@@ -8,10 +8,13 @@ public class WorkshopPaperTest {
 	WorkshopReview[] testReviews = new WorkshopReview[3];
 	
 	@Before 
-	public void setup(){
+	public void setup() {
 		for (int i = 0; i < 3; i++){
 			testReviews[i] = new WorkshopReview();
-			testReviews[i].setRScore(i+1);
+			try {
+				testReviews[i].setRScore(i+1);
+			}catch(Exception e){
+			}
 			testReviews[i].setRReview("Review " + (i+1) + " contents");
 		}	
 	}
