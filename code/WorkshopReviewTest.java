@@ -40,7 +40,10 @@ public class WorkshopReviewTest {
 	//Passed 6/4/2017
 	@Test
 	public void test_Main_isScore_isReview(){
-		review = new WorkshopReview(4, "great");
+		try{
+			review = new WorkshopReview(4, "great");
+		}catch(Exception e){
+		}
 //		assertNotNull(review.getRScore()); 
 //		assertNotNull(review.getRReview());
 		
@@ -116,12 +119,15 @@ public class WorkshopReviewTest {
 	}
 
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	//Finished writing test -- Luou Wen 6/4/2017 -- NOT SURE IF CORRECT
+	//Finished writing test -- Luou Wen 6/4/2017
 	//Passed - 6/4/2017
 	@Test
 	public void test_SetScore_InRange(){ 
 		int score = 1;
-		review.setRScore(score);
+		try {
+			review.setRScore(score); 
+		}catch(Exception e){
+		}
 		assertEquals(1, review.getRScore());
 	}
 	
@@ -149,7 +155,7 @@ public class WorkshopReviewTest {
 		fail();
 	}
 	
-	//Date Created: 06-04-17; Author: Luou WEN -- need to double check how it should be done
+	//Date Created: 06-04-17; Author: Luou WEN
 	//Passed - 6/4/2017
 	@Test
 	public void test_SetReview(){ 
