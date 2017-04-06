@@ -2,7 +2,7 @@
 public class WorkshopReview {
 	private int RScore;
 	private String RReview;
-	public static String[] ROutputs = new String[]{"*","**","***","****","*****"};
+	public static String[] ROutputs = new String[]{"","*","**","***","****","*****"};
 	//private static String[] ROutputs = new String[]{"*","**","***","****","*****"};
 	//temporarily changed to public for testing
 	
