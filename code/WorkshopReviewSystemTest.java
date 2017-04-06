@@ -13,7 +13,8 @@ public class WorkshopReviewSystemTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private ByteArrayInputStream inContent;
 	ArrayList<WorkshopPaper> testPapers = new ArrayList<WorkshopPaper>();
-	
+	String expOutOverview = "";
+	String expOutAPaper = "";
 	@Before
 	public void setup(){
 		//Set up streams
@@ -33,7 +34,48 @@ public class WorkshopReviewSystemTest {
 		p2.addReview(new WorkshopReview(1,"So painful to read."));
 		
 		testPapers.add(p2);
+		
+		expOutOverview = "1) Paper 1 is great - 3.0\r\n";
+		expOutOverview += "2) Paper 2 is my best work - 1.3333334\r\n";
+		
+		expOutAPaper = "\nPaper 1 - Average Score = ***\n\n"; 
+		expOutAPaper += "Review 1:\n" + "Score = ****\n" + "This paper is pretty good.\n\n";
+		expOutAPaper += "Review 2:\n" + "Score = ***\n" + "This paper is good for the workshop.\n\n";
+		expOutAPaper += "Review 3:\n" + "Score = **\n" + "This paper is pretty mediocre.\n\n";		
 	}
+	
+	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
+	//
+	@Test
+	public void testMainResponse(){
+		String[] args = null;
+		WorkshopReviewSystem.main(args);
+		
+		inContent = new ByteArrayInputStream("A".getBytes());
+		System.setIn(inContent);
+		assertEquals("Command not recognised",outContent.toString());
+		
+		inContent = new ByteArrayInputStream("P".getBytes());
+		System.setIn(inContent);
+		assertEquals("What is the title of the paper?",outContent.toString());
+		
+		inContent = new ByteArrayInputStream("R".getBytes());
+		System.setIn(inContent);
+		
+		
+		WorkshopReviewSystem.AllPapers = testPapers;
+		inContent = new ByteArrayInputStream("O".getBytes());
+		System.setIn(inContent);
+		assertEquals(expOutOverview,outContent.toString());
+		
+		inContent = new ByteArrayInputStream("1".getBytes());
+		System.setIn(inContent);
+		assertEquals(expOutAPaper,outContent.toString());
+		
+		inContent = new ByteArrayInputStream("X".getBytes());
+		System.setIn(inContent);
+	}
+	
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
 	//Passed - 5/4/17 15:53
@@ -43,10 +85,7 @@ public class WorkshopReviewSystemTest {
 		
 		WorkshopReviewSystem.PrintPaperOverview();
 		
-		String expectedOut = "1) Paper 1 is great - 3.0\r\n";
-		expectedOut += "2) Paper 2 is my best work - 1.3333334\r\n";
-		
-		assertEquals(expectedOut, outContent.toString());
+		assertEquals(expOutOverview, outContent.toString());
 	}
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
@@ -59,6 +98,7 @@ public class WorkshopReviewSystemTest {
 		} catch (Exception e){
 			if (e.getClass()==Exception.class){
 				assertEquals("No papers were found.\r\n", outContent.toString());
+//				assertNotNull(outContent.toString()); -- Exact same message or just check a message was printed?
 				return;
 			}
 		}
@@ -76,19 +116,14 @@ public class WorkshopReviewSystemTest {
 		int paperID = 1;
 		WorkshopReviewSystem.PrintAPaper(paperID);
 		
-		String expectedOutput = "";
-		expectedOutput = "\nPaper 1 - Average Score = ***\n\n"; 
-		expectedOutput += "Review 1:\n" + "Score = ****\n" + "This paper is pretty good.\n\n";
-		expectedOutput += "Review 2:\n" + "Score = ***\n" + "This paper is good for the workshop.\n\n";
-		expectedOutput += "Review 3:\n" + "Score = **\n" + "This paper is pretty mediocre.\n\n";		
-		assertEquals(expectedOutput, outContent.toString());
+		assertEquals(expOutAPaper, outContent.toString());
 		
 	}
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN	
 	//BUG #3 - No error created - 05/04/17 16:24
 	@Test
-	public void testNoPrintAPaper(){
+	public void testPrintAPaperErrorWhenNoSuchPaper(){
 		WorkshopReviewSystem.AllPapers = new ArrayList<WorkshopPaper>();
 		try{
 			int paperID = 5;

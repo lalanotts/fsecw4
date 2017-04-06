@@ -74,54 +74,49 @@ public class WorkshopReviewTest {
 	    assertNotNull(Returnedscore);
 	}
 	
-	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG, Luou WEN
+	//Added different out of range variables -- L WEN
 	//Failed - no exception caught - 6/4/2017
 	@Test
-	public void test_SetScore_OutOfRangePos(){ 
+	public void test_SetScore_OutofRange(){
+		Boolean errThrown1 = false;
+		Boolean errThrown2 = false;
+		Boolean errThrown3 = false;
 		int score = 6;
 		try {
 			review.setRScore(score); 
 		}catch(Exception e){
 			if (e.getClass()==Exception.class){
-				return;
+				errThrown1 = true;
 			}
 		}
-		fail();
-	}
-	
-	//Date Created: 06-04-17; Author: Luou Wen
-	//Failed - no exception caught - 6/4/2017
-	@Test
-	public void test_SetScore_OutOfRangeNeg(){ 
-		int score = -1;
+		
+		score = -1;
 		try {
 			review.setRScore(score); 
 		}catch(Exception e){
 			if (e.getClass()==Exception.class){
-				return;
+				errThrown2 = true;
 			}
 		}
-		fail();
-	}
-	
-	//Date Created: 06-04-17; Author: Luou Wen
-	//Failed - no exception caught - 6/4/2017
-	//
-	@Test
-	public void test_SetScore_OutOfRangeZero(){ 
-		int score = 0;
+		
+		score = -4;
 		try {
 			review.setRScore(score); 
 		}catch(Exception e){
 			if (e.getClass()==Exception.class){
-				return;
+				errThrown3 = true;
 			}
+		}
+		
+		if(errThrown1 && errThrown2 && errThrown3){
+			return;
 		}
 		fail();
 	}
 
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	//Finished writing test -- Luou Wen 6/4/2017 
+	//Finished writing test -- Luou Wen 6/4/2017 -- NOT SURE IF CORRECT
 	//Passed - 6/4/2017
 	@Test
 	public void test_SetScore_InRange(){ 
@@ -154,7 +149,7 @@ public class WorkshopReviewTest {
 		fail();
 	}
 	
-	//Date Created: 06-04-17; Author: WEN
+	//Date Created: 06-04-17; Author: Luou WEN -- need to double check how it should be done
 	//Passed - 6/4/2017
 	@Test
 	public void test_SetReview(){ 
