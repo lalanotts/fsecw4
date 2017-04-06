@@ -1,5 +1,6 @@
 
 public class WorkshopPaper {
+	//Changed all variables from private to public for testing -- WEN & SHEN
 	public String PTitle;
 	public WorkshopReview[] PReviews;
 	public static String[] ROutputs = new String[]{"*","**","***","****","*****"};

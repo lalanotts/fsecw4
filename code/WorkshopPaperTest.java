@@ -16,7 +16,6 @@ public class WorkshopPaperTest {
 		}	
 	}
 	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Passed - 2/4/17 21:32
 	@Test
 	public void testWPDefaultConstructor() {
@@ -28,7 +27,6 @@ public class WorkshopPaperTest {
 	}
 	
 	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Failed - no error created - 2/4/17 21:32
 	@Test
 	public void testWPMainConstructorErrorCreated() {
@@ -48,7 +46,6 @@ public class WorkshopPaperTest {
 	
 
 	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Passed - 2/4/17 21:32
 	@Test
 	public void testWPMainConstructorNormalInput(){
@@ -59,27 +56,43 @@ public class WorkshopPaperTest {
 		assertNull(testPaper.PReviews[2]);
 	}
 	
-// -- NOT SURE IF NEEDED
-//	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
-//	//Failed - check association - 31/3/17 21:00
-//	//Passed - 2/4/17 21:32
-//	@Test
-//	public void testgetPTitle(){
-//		WorkshopPaper testPaper = new WorkshopPaper("Title");
-//		String testPTitle = testPaper.getPTitle();
-//		assertEquals("Title", testPTitle);
-//	}
-//	
-//	//Date Created: 31-03-17 19:13; Authors: Luou WEN, Yanting SHEN]
-//	//--test not implemented
-//	@Test
-//	public void testsetPTitle(){
-//		fail();
-//	}
+
+	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
+	//Passed - 2/4/17 21:32
+	@Test
+	public void testgetPTitle(){
+		WorkshopPaper testPaper = new WorkshopPaper("Title");
+		String testPTitle = testPaper.getPTitle();
+		assertEquals("Title", testPTitle);
+	}
 	
+	//Date Created: 31-03-17 19:13; Authors: Luou WEN, Yanting SHEN]
+	//--test not implemented
+	//Finished - 06/04/2017
+	//Failed - No exception caught - 6/4/2017
+	@Test
+	public void testsetPTitleErrorThrown(){
+		WorkshopPaper testPaper = new WorkshopPaper();
+		try{
+			testPaper.setPTitle("");
+		} catch (Exception e){
+			if (e.getClass()==Exception.class){
+				return;
+			}
+		}
+		fail();
+	}
+	
+	//Date Created: 05-04-17 17:13; Authors: Luou WEN, Yanting SHEN
+	//Paased 6/4/2017
+	@Test
+	public void testsetPTitle(){
+		WorkshopPaper testPaper = new WorkshopPaper();
+		testPaper.setPTitle("Test Title");
+		assertEquals("Test Title", testPaper.getPTitle());
+	}
 	
 	//Date Created: 31-03-17 18:54; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Failed - No error created - 2/4/17 21:32
 	@Test
 	public void testaddReviewNullErrorCreated(){
@@ -96,7 +109,6 @@ public class WorkshopPaperTest {
 	}
 	
 	//Date Created: 31-03-17 19:30; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Passed - 2/4/17 21:32 
 	@Test
 	public void testaddReviewNormalInput(){
@@ -111,7 +123,6 @@ public class WorkshopPaperTest {
 	}
 	
 	//Date Created: 31-03-17 19:17; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Failed - No error created - 2/4/17 21:32
 	@Test
 	public void testaddReviewOverLimitErrorCreated(){
@@ -131,7 +142,6 @@ public class WorkshopPaperTest {
 	}
 		
 	//Date Created: 31-03-17 19:45; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Failed - No error created - 2/4/17 21:32
 	@Test
 	public void testgetAverageScoreNoScore(){
@@ -147,7 +157,6 @@ public class WorkshopPaperTest {
 	}
 	
 	//Date Created: 31-03-17 20:19; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Passed - code correctly implemented - 4/4/2017 - 16:17
 	@Test
 	public void testgetAverageScoreOutputCorrect(){
@@ -161,7 +170,6 @@ public class WorkshopPaperTest {
 	}
 	
 	//Date Created: 31-03-17 20:35; Authors: Luou WEN, Yanting SHEN
-	//Failed - check association - 31/3/17 21:00
 	//Failed - Output did not match - 4/4/17 16:04
 	@Test
 	public void testtoString(){

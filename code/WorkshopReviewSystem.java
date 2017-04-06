@@ -2,6 +2,7 @@ import java.util.*;
 
 
 public class WorkshopReviewSystem {
+	//Changed all methods and variables to public for testing -- WEN & SHEN
 
 	public static ArrayList<WorkshopPaper> AllPapers;
 	
@@ -52,7 +53,6 @@ public class WorkshopReviewSystem {
 				}
 			} catch (Exception e) {
 				System.out.println("Something went wrong: " + e.toString() + "\n");
-				
 			}
 			System.out.println("What do you want to do?\n O = Overview, P = Add Paper, R = Add Review, [num] = Detail of that paper, X = exit");
 		}

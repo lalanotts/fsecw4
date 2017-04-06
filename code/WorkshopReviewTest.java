@@ -23,9 +23,8 @@ public class WorkshopReviewTest {
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
     //Junsong -- finished -- default score and review were tested
+	//Passed - 31/3/2017
 	@Test
-	
-	
 	public void test_Default() {
 		review = new WorkshopReview();
 		int dScore = review.getRScore();
@@ -36,58 +35,104 @@ public class WorkshopReviewTest {
 	}
 
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	//--unfinished
+	//How would you know if the strings entered were correct if you only checked if they were not null??
+	//Finished writing test -- Luou Wen 6/4/2017 
+	//Passed 6/4/2017
 	@Test
 	public void test_Main_isScore_isReview(){
 		review = new WorkshopReview(4, "great");
-		assertNotNull(review.getRScore());
-		assertNotNull(review.getRReview());
+//		assertNotNull(review.getRScore()); 
+//		assertNotNull(review.getRReview());
+		
+		int dScore = review.getRScore();
+		assertEquals(dScore, 4);
+		
+		String dReview = review.getRReview();
+		assertEquals(dReview, str2);
 	}
 
+	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//test error thrown when below minimum amount of text (5 characters)
+	//Failed - No exception thrown for text too short - 6/4/2017
 	@Test
 	public void test_Main_ReviewErrorThrown(){
 		try{
 			review = new WorkshopReview(4, "word");
-		}catch (Exception revExcep){
-			return;
-		}//test minimum amount of text
-		//minimum is 5
+		}catch(Exception e){
+			if (e.getClass()==Exception.class){
+				return;
+			}
+		}
 		fail();
-	}
-	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	@Test
-	public void test_GetSocore(){
-	        int Returnedscore = review.getRScore();
-	        assertNotNull(Returnedscore);
 	}
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	//--unfinished
+	//Passed - 6/4/2017
 	@Test
-	public void test_SetScore_OutOfRange(){ 
+	public void test_GetScore(){
+	    int Returnedscore = review.getRScore();
+	    assertNotNull(Returnedscore);
+	}
+	
+	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//Failed - no exception caught - 6/4/2017
+	@Test
+	public void test_SetScore_OutOfRangePos(){ 
 		int score = 6;
 		try {
 			review.setRScore(score); 
-			} 
-		catch(Exception e){
-			return;
+		}catch(Exception e){
+			if (e.getClass()==Exception.class){
+				return;
 			}
+		}
+		fail();
+	}
+	
+	//Date Created: 06-04-17; Author: Luou Wen
+	//Failed - no exception caught - 6/4/2017
+	@Test
+	public void test_SetScore_OutOfRangeNeg(){ 
+		int score = -1;
+		try {
+			review.setRScore(score); 
+		}catch(Exception e){
+			if (e.getClass()==Exception.class){
+				return;
+			}
+		}
+		fail();
+	}
+	
+	//Date Created: 06-04-17; Author: Luou Wen
+	//Failed - no exception caught - 6/4/2017
+	//
+	@Test
+	public void test_SetScore_OutOfRangeZero(){ 
+		int score = 0;
+		try {
+			review.setRScore(score); 
+		}catch(Exception e){
+			if (e.getClass()==Exception.class){
+				return;
+			}
+		}
 		fail();
 	}
 
+	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//Finished writing test -- Luou Wen 6/4/2017 
+	//Passed - 6/4/2017
 	@Test
 	public void test_SetScore_InRange(){ 
-		int score = 4;
-		try {
-			review.setRScore(score); 
-			} 
-		catch(Exception e){
-			fail();
-			}
+		int score = 1;
+		review.setRScore(score);
+		assertEquals(1, review.getRScore());
 	}
 	
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//Passed - 6/4/2017
 	@Test
 	public void test_GetReview(){
 			String Returnreview = review.getRReview();
@@ -95,19 +140,30 @@ public class WorkshopReviewTest {
 	}
 	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
-	//--unfinished
+	//Finished writing -- WEN 6/4/2017
+	//Failed - no exception caught - 6/4/2017
 	@Test
-	public void test_SetReview(){ 
+	public void test_SetReviewErrorThrown(){ 
 		try {
 			review.setRReview(str3); 
-			} 
-		catch(Exception e){
-			return;
+		}catch(Exception e){
+			if (e.getClass()==Exception.class){
+				return;
+			}
 		}
 		fail();
 	}
 	
+	//Date Created: 06-04-17; Author: WEN
+	//Passed - 6/4/2017
+	@Test
+	public void test_SetReview(){ 
+		review.setRReview(str2);
+		assertEquals("great", review.getRReview());
+	}
+	
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
+	//Passed - 6/4/2017
 	@Test
 	public void test_toString(){
 		String toString = review.toString();
