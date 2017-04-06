@@ -15,16 +15,20 @@ public class WorkshopReviewSystem {
 		AllPapers = new ArrayList<WorkshopPaper>();
 		
 		WorkshopPaper p1 = new WorkshopPaper("Paper 1 is great");
+		try{
 		p1.addReview(new WorkshopReview(4,"This paper is pretty good."));
 		p1.addReview(new WorkshopReview(3,"This paper is good for the workshop."));
 		p1.addReview(new WorkshopReview(2, "This paper is pretty mediocre."));
+		}catch(Exception e){}
 		
 		AllPapers.add(p1);
 		
 		WorkshopPaper p2 = new WorkshopPaper("Paper 2 is my best work");
+		try{
 		p2.addReview(new WorkshopReview(2,"This can hardly be his best work"));
 		p2.addReview(new WorkshopReview(1,"Ive read better articles in Hello Magazine"));
 		p2.addReview(new WorkshopReview(1,"So painful to read."));
+		}catch(Exception e){}
 		
 		AllPapers.add(p2);
 		
@@ -60,6 +64,8 @@ public class WorkshopReviewSystem {
 		
 	}
 	
+
+
 	public static void AddPaper(Scanner in) {
 		System.out.println("What is the title of the paper?");
 		in.nextLine(); // to remove read-in bug
@@ -68,6 +74,7 @@ public class WorkshopReviewSystem {
 		System.out.println("[Paper added]");
 	}
 	
+
 	public static void AddReview(Scanner in) {
 		System.out.println("Which paper do you want to add a review to?");
 		int x = in.nextInt();
@@ -77,15 +84,28 @@ public class WorkshopReviewSystem {
 		in.nextLine(); //to remove read-in bug
 		String review = in.nextLine();
 		WorkshopPaper wp = AllPapers.get(x-1);
-		wp.addReview(new WorkshopReview(score,review));
+		try{
+			wp.addReview(new WorkshopReview(score,review));
+		}catch(Exception e){}
 		System.out.println("[Review added to Paper " + x + "]");
 	}
 	
-	public static void PrintPaperOverview(){
+	
+//	public static void PrintPaperOverview(){
+//		for (int x = 0; x < AllPapers.size(); x++) {
+//			WorkshopPaper wp = AllPapers.get(x);
+//			System.out.println((x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore());
+//		}
+//	}
+	
+	public static String PrintPaperOverview(){
+		String test = "";
 		for (int x = 0; x < AllPapers.size(); x++) {
 			WorkshopPaper wp = AllPapers.get(x);
-			System.out.println((x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore());
+			test +=  (x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore() + "\n";
 		}
+		System.out.println(test);
+		return test;
 	}
 	
 	public static void PrintAPaper(int paperID) {

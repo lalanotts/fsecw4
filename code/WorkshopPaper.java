@@ -13,20 +13,26 @@ public class WorkshopPaper {
 		PReviews[2] = null;
 	}
 	
-	public WorkshopPaper(String pTitle) {
-		PTitle = pTitle;
-		PReviews = new WorkshopReview[3];
-		PReviews[0] = null;
-		PReviews[1] = null;
-		PReviews[2] = null;
+	public WorkshopPaper(String pTitle) throws Exception {
+		if(pTitle.length() != 0){
+			PTitle = pTitle;
+			PReviews = new WorkshopReview[3];
+			PReviews[0] = null;
+			PReviews[1] = null;
+			PReviews[2] = null;
+		}else
+			throw new Exception();
 	}
 
 	public String getPTitle() {
 		return PTitle;
 	}
 
-	public void setPTitle(String pTitle) {
-		PTitle = pTitle;
+	public void setPTitle(String pTitle)  throws Exception {
+		if(pTitle.length() != 0){
+			PTitle = pTitle;
+		}else
+			throw new Exception();
 	}
 	
 	public void addReview(WorkshopReview nReview) {

@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import org.junit.Before;
-import org.junit.After;
 
 public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
@@ -124,6 +123,7 @@ public class WorkshopReviewTest {
 	@Test
 	public void test_SetScore_InRange(){ 
 		int score = 1;
+
 		try {
 			review.setRScore(score); 
 		}catch(Exception e){
@@ -159,7 +159,9 @@ public class WorkshopReviewTest {
 	//Passed - 6/4/2017
 	@Test
 	public void test_SetReview(){ 
+		try{
 		review.setRReview(str2);
+		}catch(Exception e){}
 		assertEquals("great", review.getRReview());
 	}
 	

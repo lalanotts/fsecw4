@@ -30,8 +30,11 @@ public class WorkshopReview {
 	public String getRReview() {
 		return RReview;
 	}
-	public void setRReview(String rReview) {
-		RReview = rReview;
+	public void setRReview(String rReview) throws Exception {
+		if (rReview.length() >= 5){
+			RReview = rReview;
+		}else
+			throw new Exception();
 	}
 
 	@Override
