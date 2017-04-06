@@ -16,7 +16,7 @@ public class WorkshopReviewSystemTestMain {
 	//Date Created: 05-04-17; Authors: Junsong Yang, Yanting SHEN	
 	//Passed - 06/04/17 13:00
 	@Test
-	public void test_main_O() {
+	public void test_main_Overview() {
 		
 		inContent = new ByteArrayInputStream("O".getBytes());
 		System.setIn(inContent);
@@ -37,7 +37,7 @@ public class WorkshopReviewSystemTestMain {
 	//Date Created: 05-04-17; Authors: Junsong Yang, Yanting SHEN	
 	//Passed - 06/04/17 13:00
 	@Test
-	public void test_main_P() {
+	public void test_main_AddPaper() {
 		
 		inContent = new ByteArrayInputStream("P\nlalala".getBytes());
 		System.setIn(inContent);
@@ -60,7 +60,7 @@ public class WorkshopReviewSystemTestMain {
 	//Date Created: 05-04-17; Authors: Junsong Yang, Yanting SHEN	
 	//Passed - 06/04/17 13:00
 	@Test
-	public void test_main_R() {
+	public void test_main_AddReview() {
 		
 		inContent = new ByteArrayInputStream("R\n1\n4\nlalala\n".getBytes());
 		System.setIn(inContent);
@@ -83,7 +83,7 @@ public class WorkshopReviewSystemTestMain {
 	//Passed - 06/04/17 13:00
 	//input a paper that non-exists to test if this method throw err message when user tries to add review to a non-exists paper
 	@Test
-	public void test_main_R_NonExist() {
+	public void test_main_AddReviewToPaperThatNonExist() {
 		
 		inContent = new ByteArrayInputStream("R\n8\n4\nlalala\n".getBytes());
 		System.setIn(inContent);
@@ -106,7 +106,7 @@ public class WorkshopReviewSystemTestMain {
 	//Passed - 06/04/17 13:00
 	
 	@Test
-	public void test_main_Num() {
+	public void test_main_PrintAPaper() {
 		
 		inContent = new ByteArrayInputStream("3".getBytes());
 		System.setIn(inContent);
@@ -130,7 +130,7 @@ public class WorkshopReviewSystemTestMain {
 		//Passed - 06/04/17 13:00
 		//input a paper that non-exists to test if this method throw err message
 		@Test
-		public void test_main_Num_NonExists() {
+		public void test_main_PrintAPaperThatNonExists() {
 			
 			inContent = new ByteArrayInputStream("5".getBytes());
 			System.setIn(inContent);
@@ -152,7 +152,7 @@ public class WorkshopReviewSystemTestMain {
 	//Date Created: 05-04-17; Authors: Junsong Yang, Yanting SHEN	
 	//Passed - 06/04/17 13:00
 	@Test
-	public void test_main_X() {
+	public void test_main_Exit() {
 		
 		inContent = new ByteArrayInputStream("X\n".getBytes());
 		System.setIn(inContent);
@@ -171,6 +171,28 @@ public class WorkshopReviewSystemTestMain {
 		
 	}
 		
+	
+	//Date Created: 05-04-17; Authors: Junsong Yang, Yanting SHEN	
+	//Passed - 06/04/17 13:00
+	//input a paper that non-exists to test if this method throw err message when user tries to add review to a non-exists paper
+		@Test
+		public void test_main_InputCommandThatNonexists() {
+			
+			inContent = new ByteArrayInputStream("AAA".getBytes());
+			System.setIn(inContent);
+			System.setOut(new PrintStream(outContent));
+			
+			try{
+				WorkshopReviewSystem.main(null);
+				
+			}catch(Exception e){
+				fail();
+			}
+			
+			assertEquals("What do you want to do?\n O = Overview, P = Add Paper, R = Add Review, [num] = Detail of that paper, X = exit\r\nSomething went wrong: java.lang.NumberFormatException: For input string: \"AAA\"\n\r\nWhat do you want to do?\n O = Overview, P = Add Paper, R = Add Review, [num] = Detail of that paper, X = exit\r\n", outContent.toString());
+			
+			
+		}
 	
 	@After
 	public void cleanup(){

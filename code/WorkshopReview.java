@@ -11,21 +11,30 @@ public class WorkshopReview {
 		RReview = "No Review";
 	}
 	
-	public WorkshopReview(int rScore, String rReview) {
-		RScore = rScore;
-		RReview = rReview;
+	public WorkshopReview(int rScore, String rReview) throws Exception{
+		if (rReview.length() >= 5){
+			RScore = rScore;
+			RReview = rReview;
+		}else
+			throw new Exception();
 	}
 	public int getRScore() {
 		return RScore;
 	}
-	public void setRScore(int rScore) {
-		RScore = rScore;
+	public void setRScore(int rScore) throws Exception{
+		if (rScore >= 1 && rScore <= 5){
+			RScore = rScore;
+		}else
+			throw new Exception();
 	}
 	public String getRReview() {
 		return RReview;
 	}
-	public void setRReview(String rReview) {
-		RReview = rReview;
+	public void setRReview(String rReview) throws Exception {
+		if (rReview.length() >= 5){
+			RReview = rReview;
+		}else
+			throw new Exception();
 	}
 
 	@Override

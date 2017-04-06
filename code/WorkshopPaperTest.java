@@ -8,11 +8,14 @@ public class WorkshopPaperTest {
 	WorkshopReview[] testReviews = new WorkshopReview[3];
 	
 	@Before 
-	public void setup(){
+	public void setup() {
 		for (int i = 0; i < 3; i++){
 			testReviews[i] = new WorkshopReview();
-			testReviews[i].setRScore(i+1);
-			testReviews[i].setRReview("Review " + (i+1) + " contents");
+			try {
+				testReviews[i].setRScore(i+1);
+				testReviews[i].setRReview("Review " + (i+1) + " contents");
+			}catch(Exception e){}
+			
 		}	
 	}
 	//Date Created: 31-03-17; Authors: Luou WEN, Yanting SHEN
@@ -30,14 +33,10 @@ public class WorkshopPaperTest {
 	//Failed - no error created - 2/4/17 21:32
 	@Test
 	public void testWPMainConstructorErrorCreated() {
-		WorkshopPaper testPaper = null;
 		try{
-			testPaper = new WorkshopPaper("");
+			new WorkshopPaper("");
 		} catch (Exception e){
 			if (e.getClass()==Exception.class){
-				assertNull(testPaper.PReviews[0]);
-				assertNull(testPaper.PReviews[1]);
-				assertNull(testPaper.PReviews[2]);
 				return;
 			}
 		}
@@ -49,11 +48,13 @@ public class WorkshopPaperTest {
 	//Passed - 2/4/17 21:32
 	@Test
 	public void testWPMainConstructorNormalInput(){
+		try{
 		WorkshopPaper testPaper = new WorkshopPaper("Paper Title");
 		assertEquals("Paper Title", testPaper.PTitle);
 		assertNull(testPaper.PReviews[0]);
 		assertNull(testPaper.PReviews[1]);
 		assertNull(testPaper.PReviews[2]);
+		}catch(Exception e){}
 	}
 	
 
@@ -61,13 +62,15 @@ public class WorkshopPaperTest {
 	//Passed - 2/4/17 21:32
 	@Test
 	public void testgetPTitle(){
-		WorkshopPaper testPaper = new WorkshopPaper("Title");
-		String testPTitle = testPaper.getPTitle();
-		assertEquals("Title", testPTitle);
+		try{
+			WorkshopPaper testPaper = new WorkshopPaper("Title");
+			String testPTitle = testPaper.getPTitle();
+			assertEquals("Title", testPTitle);
+		}catch(Exception e){}
 	}
 	
 	//Date Created: 31-03-17 19:13; Authors: Luou WEN, Yanting SHEN
-	//Failed - No exception caught - 6/4/2017
+	//Failed - No exception caught for empty string - 6/4/2017
 	@Test
 	public void testsetPTitleErrorThrown(){
 		WorkshopPaper testPaper = new WorkshopPaper();
@@ -86,7 +89,9 @@ public class WorkshopPaperTest {
 	@Test
 	public void testsetPTitle(){
 		WorkshopPaper testPaper = new WorkshopPaper();
-		testPaper.setPTitle("Test Title");
+		try{
+			testPaper.setPTitle("Test Title");
+		}catch(Exception e){}
 		assertEquals("Test Title", testPaper.getPTitle());
 	}
 		

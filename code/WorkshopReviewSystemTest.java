@@ -1,87 +1,18 @@
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.io.InputStream;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
+import org.junit.Before;
+import org.junit.After;
 
-public class WorkshopReviewSystemTestPart1 {
+public class WorkshopReviewSystemTest {
 	
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private ByteArrayInputStream inContent;
-	ArrayList<WorkshopPaper> testarr = new ArrayList<WorkshopPaper>();
 	ArrayList<WorkshopPaper> testPapers = new ArrayList<WorkshopPaper>();
-	Scanner in = new Scanner(System.in);
-	
-	
-	String title1, title2, title3, review;
-	int score;
-  
-	//Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
-	@Before 
-	public void setuppart1(){
-		title1 = "water";
-		title2 = "liquid";
-		title3 = "a";		
-		review = "fantastic";
-		score = 4;
-		//System.setOut(new PrintStream (outContent));
-	}
-	
-	
-  //Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
-	@Test
-	public void test_AddPaper(){   
-		
-		WorkshopReviewSystem.AllPapers = testarr;
-		inContent = new ByteArrayInputStream("\na\na\n".getBytes());
-		System.setIn(inContent);
-		
-		try{
-		
-			WorkshopReviewSystem.AddPaper(in);
-		}catch (Exception e){
-			System.err.println(e.toString());
-			fail();
-		}
-		assertEquals(WorkshopReviewSystem.AllPapers.get(0).getPTitle(), "a");
-		//fail();
-
-	}
-
-	//Date Created: 05-04-17; Authors: Junsong Yang, Chaoqun Zhang
-	@Test
-	public void test_AddReview_toExistsPaper() {
-		WorkshopReviewSystem.AllPapers = testarr;
-		
-		WorkshopReviewSystem.AllPapers.add(new WorkshopPaper(title2));
-		
-//		WorkshopPaper wp = WorkshopReviewSystem.AllPapers.get(0);
-
-		inContent = new ByteArrayInputStream("1".getBytes());
-		
-		System.setIn(inContent);
-		
-		try{
-			WorkshopReviewSystem.AddReview(in);
-		}catch(Exception e){
-			fail();
-		}
-		
-
-	}
-	
-	
 	String expOutOverview = "";
 	String expOutAPaper = "";
 	@Before
@@ -113,6 +44,38 @@ public class WorkshopReviewSystemTestPart1 {
 		expOutAPaper += "Review 3:\n" + "Score = **\n" + "This paper is pretty mediocre.\n\n";		
 	}
 	
+	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
+	//
+	@Test
+	public void testMainResponse(){
+		String[] args = null;
+		
+		
+		inContent = new ByteArrayInputStream("A".getBytes());
+		System.setIn(inContent);
+		WorkshopReviewSystem.main(args);
+		assertEquals("Command not recognised",outContent.toString());
+		
+//		inContent = new ByteArrayInputStream("P".getBytes());
+//		System.setIn(inContent);
+//		assertEquals("What is the title of the paper?",outContent.toString());
+//		
+//		inContent = new ByteArrayInputStream("R".getBytes());
+//		System.setIn(inContent);
+//		assertEquals("Which paper do you want to add a review to?",outContent.toString());
+//		
+//		WorkshopReviewSystem.AllPapers = testPapers;
+//		inContent = new ByteArrayInputStream("O".getBytes());
+//		System.setIn(inContent);
+//		assertEquals(expOutOverview,outContent.toString());
+//		
+//		inContent = new ByteArrayInputStream("1".getBytes());
+//		System.setIn(inContent);
+//		assertEquals(expOutAPaper,outContent.toString());
+//		
+//		inContent = new ByteArrayInputStream("X".getBytes());
+//		System.setIn(inContent);
+	}
 	
 	
 	//Date Created: 05-04-17; Authors: Luou WEN, Yanting SHEN
@@ -173,10 +136,12 @@ public class WorkshopReviewSystemTestPart1 {
 		}
 		fail();
 	}
-
+	
 	@After
 	public void cleanUp(){
+		//clean up Streams
 		System.setOut(System.out);
 		System.setIn(System.in);
 	}
+
 }
