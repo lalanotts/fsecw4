@@ -60,6 +60,8 @@ public class WorkshopReviewSystem {
 		
 	}
 	
+
+
 	public static void AddPaper(Scanner in) {
 		System.out.println("What is the title of the paper?");
 		in.nextLine(); // to remove read-in bug
@@ -68,6 +70,7 @@ public class WorkshopReviewSystem {
 		System.out.println("[Paper added]");
 	}
 	
+
 	public static void AddReview(Scanner in) {
 		System.out.println("Which paper do you want to add a review to?");
 		int x = in.nextInt();
@@ -81,11 +84,22 @@ public class WorkshopReviewSystem {
 		System.out.println("[Review added to Paper " + x + "]");
 	}
 	
-	public static void PrintPaperOverview(){
+	
+//	public static void PrintPaperOverview(){
+//		for (int x = 0; x < AllPapers.size(); x++) {
+//			WorkshopPaper wp = AllPapers.get(x);
+//			System.out.println((x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore());
+//		}
+//	}
+	
+	public static String PrintPaperOverview(){
+		String test = "";
 		for (int x = 0; x < AllPapers.size(); x++) {
 			WorkshopPaper wp = AllPapers.get(x);
-			System.out.println((x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore());
+			test +=  (x+1) + ") " + wp.getPTitle()+ " - " + wp.getAverageScore() + "\n";
 		}
+		System.out.println(test);
+		return test;
 	}
 	
 	public static void PrintAPaper(int paperID) {
