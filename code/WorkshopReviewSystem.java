@@ -28,6 +28,13 @@ public class WorkshopReviewSystem {
 		
 		AllPapers.add(p2);
 		
+		WorkshopPaper p3 = new WorkshopPaper("a");
+		p3.addReview(new WorkshopReview(1,"b"));
+		p3.addReview(new WorkshopReview(1,"b"));
+		p3.addReview(new WorkshopReview(1,"b"));
+		AllPapers.add(p3);
+		
+		
 		//PrintPaperOverview();
 		//PrintAPaper(0);
 		//PrintAPaper(1);
