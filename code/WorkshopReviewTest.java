@@ -56,6 +56,7 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//test error thrown when below minimum amount of text (5 characters)
 	//Failed - No exception thrown for text too short - 6/4/2017
+	//Passed - 06/04/2017 - 13:03
 	@Test
 	public void test_Main_ReviewErrorThrown(){
 		try{
@@ -79,6 +80,8 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG, Luou WEN
 	//Added different out of range variables -- L WEN
 	//Failed - no exception caught - 6/4/2017
+	//Failed - Wrong ranges - 06/04/2017 - 13:16
+	//Passed - 06/04/2017 - 13:46
 	@Test
 	public void test_SetScore_OutofRange(){
 		Boolean errThrown1 = false;
@@ -143,6 +146,7 @@ public class WorkshopReviewTest {
 	//Date Created: 31-03-17; Authors: Chaoqun ZHANG, Junsong YANG
 	//Finished writing -- WEN 6/4/2017
 	//Failed - no exception caught - 6/4/2017
+	//Passed - 06/04/2017 - 13:46
 	@Test
 	public void test_SetReviewErrorThrown(){ 
 		try {
