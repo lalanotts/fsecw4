@@ -62,11 +62,11 @@ public class WorkshopReviewSystemTestPart1 {
 		
 		WorkshopReviewSystem.AllPapers.add(new WorkshopPaper(title2));
 		
-		WorkshopPaper wp = WorkshopReviewSystem.AllPapers.get(0);
-		
-		inContent1 = new ByteArrayInputStream(review.getBytes());
-		inContent2 = new ByteArrayInputStream("4".getBytes());
-		inContent3 = new ByteArrayInputStream("0".getBytes());
+//		WorkshopPaper wp = WorkshopReviewSystem.AllPapers.get(0);
+//		
+//		inContent1 = new ByteArrayInputStream(review.getBytes());
+//		inContent2 = new ByteArrayInputStream("4".getBytes());
+//		inContent3 = new ByteArrayInputStream("0".getBytes());
 		
 //		System.setIn(inContent3);
 //		System.setIn(inContent2);
